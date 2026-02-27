@@ -24,13 +24,11 @@
         <h1 class="title">Welcome</h1>
         <p class="subtitle">Enter your study week number and participant ID to begin. Your wordset will be selected automatically.</p>
       
-        <!-- Participant ID input -->
         <div class="form-row">
           <label for="participant-id">Participant ID</label>
           <input type="text" id="participant-id" placeholder="e.g., 123" required />
         </div>
       
-        <!-- Week number input -->
         <div class="form-row">
           <label for="week-input">Study week number</label>
           <input type="number" id="week-input" min="1" placeholder="e.g., 1, 2, 3, ..." required />
@@ -47,23 +45,38 @@
  
         <div class="form-row">
           <label for="sleep-time">What was the average time you went to sleep?</label>
-          <input type="text" id="sleep-time" placeholder="e.g., 11:30 PM" autocomplete="off" maxlength="8" />
-          <span class="hint">Format: HH:MM AM/PM</span>
+          <input type="text" id="sleep-time" placeholder="e.g., 23:30" autocomplete="off" maxlength="5" />
+          <span class="hint">Format: HH:MM (24-hour / military time, e.g., 23:30 for 11:30 PM)</span>
         </div>
  
         <div class="form-row">
           <label for="wake-time">What was the average time you woke up?</label>
-          <input type="text" id="wake-time" placeholder="e.g., 7:00 AM" autocomplete="off" maxlength="8" />
-          <span class="hint">Format: HH:MM AM/PM</span>
+          <input type="text" id="wake-time" placeholder="e.g., 07:00" autocomplete="off" maxlength="5" />
+          <span class="hint">Format: HH:MM (24-hour / military time, e.g., 07:00 for 7:00 AM)</span>
         </div>
  
         <div class="form-row">
-          <label for="sleep-abnormal">Would you say this is abnormal compared to your normal schedule?</label>
+          <label for="sleep-abnormal">Would you say this is normal for your schedule?</label>
           <select id="sleep-abnormal">
             <option value="" disabled selected>Select an option</option>
             <option value="no">No</option>
             <option value="yes">Yes</option>
           </select>
+        </div>
+
+        <!-- Week 3 only: GLOBAL PSQI -->
+        <div class="form-row" id="psqi-row" style="display:none;">
+          <label for="psqi-score">What is your GLOBAL PSQI value?</label>
+          <input type="number" id="psqi-score" placeholder="e.g., 5" min="0" max="21" />
+          <span class="hint">
+            Use this tool to calculate it. IMPORTANT! PLEASE GIVE ONLY THE GLOBAL INDEX!:
+            <a href="https://qxmd.com/calculate/calculator_603/pittsburgh-sleep-quality-index-psqi"
+               target="_blank"
+               rel="noopener noreferrer"
+               style="color: var(--accent-2); text-decoration: underline;">
+              Pittsburgh Sleep Quality Index (PSQI) Calculator ↗
+            </a>
+          </span>
         </div>
  
         <button class="btn primary" id="sleep-submit-btn">Continue to Tests</button>
@@ -80,43 +93,37 @@
           <button class="btn primary" id="btn-rt">Reaction Time Test</button>
         </div>
       </section>
+
       <section id="instructions-section" class="section">
           <h1 class="title" id="instructions-title">Test Instructions</h1>
           <p class="subtitle" id="instructions-body"></p>
           <button class="btn primary" id="instructions-start-btn">Begin Test</button>
       </section>
+
       <section id="study-section" class="section">
-        <h2 class="title" id="study-title">
-          Study the pairs 
-        </h2>
+        <h2 class="title" id="study-title">Study the pairs</h2>
         <p class="subtitle">Each pair appears for 3 seconds. Focus on the associations.</p>
         <div class="study-pair">
           <div class="pair-word" id="pair-left">Left</div>
           <div class="pair-divider">—</div>
           <div class="pair-word" id="pair-right">Right</div>
         </div>
-        <div class="controls">
-        </div>
+        <div class="controls"></div>
       </section>
  
       <section id="round-section" class="section">
         <h2 class="title" id="round-title">Round</h2>
         <p class="subtitle">Type the matching word for each cue. Complete all 12 inputs.</p>
- 
         <div id="round-list" class="round-list"></div>
- 
         <div class="controls">
           <button class="btn" id="submit-round-btn">Submit Answer</button>
         </div>
       </section>
  
- 
       <section id="stroop-section" class="section">
         <h2 class="title">Stroop Task</h2>
         <p class="subtitle">Press the key that matches the INK COLOR.</p>
- 
         <div id="stroop-word" class="stroop-word">WORD</div>
- 
         <p class="hint">Keys: R = Red, B = Blue, G = Green, Y = Yellow</p>
         <div class="stroop-buttons">
           <button class="stroop-btn" data-color="red" style="background:red;color:white;">Red</button>
@@ -128,7 +135,6 @@
         <p class="hint" id="stroop-score-display">Correct: 0</p>
       </section>
  
-      <!-- Digit Span Sequencing section -->
       <section id="digitspan-section" class="section card">
         <h2>Digit Span Sequencing</h2>
         <div id="digitspan-display" class="digit-display">READY</div>
@@ -168,12 +174,10 @@
           <div class="score-label">Stroop Congruent</div>
           <div class="score-value" id="score-stroop-cong">0</div>
         </div>
- 
         <div class="score-card">
           <div class="score-label">Stroop Incongruent</div>
           <div class="score-value" id="score-stroop-incong">0</div>
         </div>
- 
         <div class="score-card">
           <div class="score-label">Digit Span Sequencing</div>
           <div class="score-value" id="score-digitspan">0</div>
@@ -182,11 +186,9 @@
           <div class="score-label">Reaction Time (ms)</div>
           <div class="score-value" id="score-rt">0</div>
         </div>
- 
-        <div class="controls">
-        </div>
-        
+        <div class="controls"></div>
       </section>
+
       <section id="stroop-pause" class="section">
         <div class="pause-overlay">
           <h2>Incongruent Phase Starting</h2>
