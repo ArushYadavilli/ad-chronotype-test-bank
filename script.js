@@ -392,7 +392,7 @@ function submitToGoogleForms() {
 
   // Include PSQI score for week 3 if present
   if (finalResults.sleep.psqiScore !== undefined && finalResults.sleep.psqiScore !== "") {
-    params.append("entry.PSQI_PLACEHOLDER", finalResults.sleep.psqiScore);
+    params.append("entry.902402017", finalResults.sleep.psqiScore);
   }
 
   fetch(formBaseURL, {
